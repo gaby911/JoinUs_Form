@@ -4,9 +4,10 @@ let mysql =require('mysql');
 let bodyParser  = require("body-parser");
 
 let connection = mysql.createConnection({
-    host: 'localhost',
-    user:'root',
-    database: 'join_us'
+    host: 'eu-cdbr-west-03.cleardb.net', // put localhost if you run it local
+    user:'bf24dc5369289b',// user root if you run it local
+    password: '6167af64',
+    database: 'heroku_2da2a6665fc9b28' // database join_us if you use the local db
 });
 
 app.set("view engine", "ejs");//this help us wo go automaticaly to views and recognize home.ejs
@@ -49,6 +50,7 @@ app.post("/register",function(req,res){
 //     res.send("Your lucky number is " + num);
 //    });
 
-app.listen(8080, function () {
- console.log('App listening on port 8080!');
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}.`);
 });
